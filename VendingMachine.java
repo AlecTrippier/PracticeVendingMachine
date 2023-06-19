@@ -6,11 +6,16 @@ import java.util.Scanner;
 public class VendingMachine {
 
     private Map<Integer, Drink> drinks = new HashMap<Integer, Drink>(); // 飲み物情報
+    private DepositManager depositManager = new DepositManager();
+
 
     public VendingMachine() {
-        this.drinks.put(1, new Drink("コーラ", 100, 2));
-        this.drinks.put(2, new Drink("お茶", 150, 1));
-        this.drinks.put(3, new Drink("コーヒー", 120, 0));
+        // this.drinks.put(1, new Drink("コーラ", 100, 2));
+        // this.drinks.put(2, new Drink("お茶", 150, 1));
+        // this.drinks.put(3, new Drink("コーヒー", 120, 0));
+
+        // CSVファイルから飲み物情報の取得
+        this.drinks = DrinkManager.getDrinks();
     }
 
     public void showDrink() {
@@ -60,11 +65,7 @@ public class VendingMachine {
 
     }
 
-    public void selectDrink() {
 
-        int select = getInputInt();
-
-    }
 
     public int getInputInt() {
         // 外部入力のメソッドを使用するためにはAPIのインスタンス化が必要
@@ -203,7 +204,7 @@ public class VendingMachine {
             execution();
         }
 
-        
+
 
     }
 }
